@@ -10,9 +10,17 @@ public class QueryProcessor {
         } else if (query.toLowerCase().contains("faulkner")) {
             return "William Cuthbert Faulkner (25 September 1897 – 6 July 1962) was an " +
                     "American writer and  Nobel Prize laureate from Oxford, Mississippi. " +
-                    "Faulkner wrote novels, short stories, screenplays, poetry, essays, and a play. " +
-                    "He is primarily known for his novels and short stories set in the fictional Yoknapatawpha County, " +
-                    "based on Lafayette County, Mississippi, where he spent most of his life.";
+                    "Faulkner wrote novels, short stories, screenplays, poetry, essays, " +
+                    "and a play. He is primarily known for his novels and short stories " +
+                    "set in the fictional Yoknapatawpha County, based on Lafayette " +
+                    "County, Mississippi, where he spent most of his life.";
+        } else if (query.toLowerCase().contains("steinbeck")) {
+            return "John Ernst Steinbeck Jr. (27 February 1902 – 20 December 1968) was " +
+                    "an American author and the 1962 Nobel Prize in Literature winner " +
+                    "\"for his realistic and imaginative writings, combining as they " +
+                    "do sympathetic humour and keen social perception.\" He has been " +
+                    "called \"a giant of American letters,\" and many of his works " +
+                    "are considered classics of Western literature.";
         }
         return "";
     }
