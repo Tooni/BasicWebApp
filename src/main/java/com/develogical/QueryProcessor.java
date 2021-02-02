@@ -1,5 +1,8 @@
 package com.develogical;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class QueryProcessor {
 
     public String process(String query) {
@@ -26,7 +29,7 @@ public class QueryProcessor {
         } else if (query.toLowerCase().contains("your name")) {
             return "NSBTJD";
         } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
-            //System.out.println(query);
+
             String unsplit = query.toLowerCase();
             String colonSplit[] = unsplit.split("largest:");
             String numList[] = colonSplit[1].split(",");
@@ -38,6 +41,14 @@ public class QueryProcessor {
                 }
             }
             return Integer.toString(max);
+        } else if (query.toLowerCase().contains("plus")) {
+            String numberString = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbers = Arrays.asList(numberString.trim().split(" "));
+            int sum = 0;
+            for (String num : numbers) {
+                sum += Integer.parseInt(num.trim());
+            }
+            return Integer.toString(sum);
         }
         return "";
     }
