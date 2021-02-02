@@ -49,6 +49,14 @@ public class QueryProcessor {
                 sum += Integer.parseInt(num.trim());
             }
             return Integer.toString(sum);
+        } else if (query.toLowerCase().contains("multiplied")) {
+            String numberString = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbers = Arrays.asList(numberString.trim().split(" "));
+            int sum = 1;
+            for (String num : numbers) {
+                sum *= Integer.parseInt(num.trim());
+            }
+            return Integer.toString(sum);
         }
         return "";
     }
