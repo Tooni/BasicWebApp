@@ -57,6 +57,9 @@ public class QueryProcessor {
             }
             return sb.toString();
         } else if (query.toLowerCase().contains("plus")) {
+            if (query.contains(":")) {
+                query = query.split(":")[1];
+            }
             String numberString = query.replaceAll("[^-?0-9]+", " ");
             List<String> numbers = Arrays.asList(numberString.trim().split(" "));
             int sum = 0;
@@ -65,13 +68,16 @@ public class QueryProcessor {
             }
             return Integer.toString(sum);
         } else if (query.toLowerCase().contains("multiplied")) {
+            if (query.contains(":")) {
+                query = query.split(":")[1];
+            }
             String numberString = query.replaceAll("[^-?0-9]+", " ");
             List<String> numbers = Arrays.asList(numberString.trim().split(" "));
-            int sum = 1;
+            int total = 1;
             for (String num : numbers) {
-                sum *= Integer.parseInt(num.trim());
+                total *= Integer.parseInt(num.trim());
             }
-            return Integer.toString(sum);
+            return Integer.toString(total);
         }
         return "";
     }
