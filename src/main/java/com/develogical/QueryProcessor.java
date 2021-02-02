@@ -21,6 +21,8 @@ public class QueryProcessor {
                     "do sympathetic humour and keen social perception.\" He has been " +
                     "called \"a giant of American letters,\" and many of his works " +
                     "are considered classics of Western literature.";
+        } else if (query.toLowerCase().contains("james bond") && query.toLowerCase().contains("dr no")) {
+            return "Sean Connery";
         } else if (query.toLowerCase().contains("your name")) {
             return "NSBTJD";
         } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
