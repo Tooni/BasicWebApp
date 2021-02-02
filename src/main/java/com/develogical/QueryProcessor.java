@@ -1,6 +1,5 @@
 package com.develogical;
 
-import javax.management.Query;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +25,8 @@ public class QueryProcessor {
                     "are considered classics of Western literature.";
         } else if (query.toLowerCase().contains("james bond") && query.toLowerCase().contains("dr no")) {
             return "Sean Connery";
+        } else if (query.toLowerCase().contains("eiffel tower")) {
+            return "Paris";
         } else if (query.toLowerCase().contains("your name")) {
             return "NSBTJD";
         } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
