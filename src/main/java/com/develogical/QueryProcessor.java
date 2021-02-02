@@ -36,6 +36,27 @@ public class QueryProcessor {
                 }
             }
             return Integer.toString(max);
+        } else if (query.toLowerCase().contains("both a square and a cube")) {
+            String unsplit = query.toLowerCase();
+            String colonSplit[] = unsplit.split("cube:");
+            String numList[] = colonSplit[1].split(",");
+            String result = "";
+
+            for (String s : numList) {
+                int thisNum = Integer.parseInt(s.trim());
+                int cube_root = (int) Math.round(Math.pow(thisNum, 1.0/3.0));
+                int square_root = (int) Math.round(Math.pow(thisNum, 1.0/2.0));
+
+                if (cube_root * cube_root * cube_root == thisNum &&
+                square_root * square_root == thisNum) {
+                    if (result.length() == 0) {
+                        result += thisNum;
+                    } else {
+                        result += ", " + thisNum;
+                    }
+                }
+            }
+            return result;
         }
         return "";
     }
