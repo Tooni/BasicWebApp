@@ -102,6 +102,17 @@ public class QueryProcessor {
                 total *= Integer.parseInt(num.trim());
             }
             return Integer.toString(total);
+        } else if (query.toLowerCase().contains("minus")) {
+            if (query.contains(":")) {
+                query = query.split(":")[1];
+            }
+            String numberString = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbers = Arrays.asList(numberString.trim().split(" "));
+            int sub = 0;
+            for (String num : numbers) {
+                sub -= Integer.parseInt(num.trim());
+            }
+            return Integer.toString(sub);
         } else if (query.toLowerCase().contains("fibonacci")) {
             if (query.contains(":")) {
                 query = query.split(":")[1];
@@ -118,6 +129,19 @@ public class QueryProcessor {
             }
 
             return Integer.toString(a);
+        } else if (query.toLowerCase().contains("power")) {
+            if (query.contains(":")) {
+                query = query.split(":")[1];
+            }
+            String numberString = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbers = Arrays.asList(numberString.trim().split(" "));
+            int base = Integer.parseInt(numbers.get(0));
+            int power = Integer.parseInt(numbers.get(1));
+            int ans = 1;
+            for (int i = 0; i < power; i++) {
+                ans *= base;
+            }
+            return Integer.toString(ans);
         }
         return "";
     }
