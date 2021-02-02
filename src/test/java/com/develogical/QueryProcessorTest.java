@@ -41,6 +41,11 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void determinesPrimesCorrectly() throws Exception {
+        assertThat(queryProcessor.process(" which of the following numbers are primes: 71, 840, 523, 814"), containsString("71,523"));
+    }
+
+    @Test
     public void knowsWhoPlayedBondInDrNo() throws Exception {
         assertThat(queryProcessor.process("who played james bond in dr no?"), containsString("Sean Connery"));
     }

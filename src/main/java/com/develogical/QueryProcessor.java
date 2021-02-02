@@ -1,10 +1,10 @@
 package com.develogical;
 
+import javax.management.Query;
 import java.util.Arrays;
 import java.util.List;
 
 public class QueryProcessor {
-
     public String process(String query) {
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
@@ -29,7 +29,6 @@ public class QueryProcessor {
         } else if (query.toLowerCase().contains("your name")) {
             return "NSBTJD";
         } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
-
             String unsplit = query.toLowerCase();
             String colonSplit[] = unsplit.split("largest:");
             String numList[] = colonSplit[1].split(",");
@@ -41,6 +40,22 @@ public class QueryProcessor {
                 }
             }
             return Integer.toString(max);
+        } else if (query.toLowerCase().contains("numbers are primes")) {
+            String unsplit = query.toLowerCase();
+            String colonSplit[] = unsplit.split("primes:");
+            String numList[] = colonSplit[1].split(",");
+            StringBuilder sb = new StringBuilder();
+            for (String num : numList) {
+                int n = Integer.parseInt(num.trim());
+                if (QueryProcessor.isPrime(n)) {
+                    sb.append(n);
+                    sb.append(",");
+                }
+            }
+            if (sb.length() > 0) { // cut last comma
+                sb.setLength(sb.length() - 1);
+            }
+            return sb.toString();
         } else if (query.toLowerCase().contains("plus")) {
             String numberString = query.replaceAll("[^-?0-9]+", " ");
             List<String> numbers = Arrays.asList(numberString.trim().split(" "));
@@ -59,5 +74,15 @@ public class QueryProcessor {
             return Integer.toString(sum);
         }
         return "";
+    }
+
+    public static boolean isPrime(int number) {
+        int sqrt = (int) Math.sqrt(number) + 1;
+        for (int i = 2; i < sqrt; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
