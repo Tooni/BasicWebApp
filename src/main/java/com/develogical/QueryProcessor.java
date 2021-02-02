@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class QueryProcessor {
-
     public String process(String query) {
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
@@ -26,10 +25,11 @@ public class QueryProcessor {
                     "are considered classics of Western literature.";
         } else if (query.toLowerCase().contains("james bond") && query.toLowerCase().contains("dr no")) {
             return "Sean Connery";
+        } else if (query.toLowerCase().contains("eiffel tower")) {
+            return "Paris";
         } else if (query.toLowerCase().contains("your name")) {
             return "NSBTJD";
         } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
-
             String unsplit = query.toLowerCase();
             String colonSplit[] = unsplit.split("largest:");
             String numList[] = colonSplit[1].split(",");
@@ -41,6 +41,43 @@ public class QueryProcessor {
                 }
             }
             return Integer.toString(max);
+        } else if (query.toLowerCase().contains("both a square and a cube")) {
+            String unsplit = query.toLowerCase();
+            String colonSplit[] = unsplit.split("cube:");
+            String numList[] = colonSplit[1].split(",");
+            String result = "";
+
+            for (String s : numList) {
+                int thisNum = Integer.parseInt(s.trim());
+                int cube_root = (int) Math.round(Math.pow(thisNum, 1.0/3.0));
+                int square_root = (int) Math.round(Math.pow(thisNum, 1.0/2.0));
+
+                if (cube_root * cube_root * cube_root == thisNum &&
+                square_root * square_root == thisNum) {
+                    if (result.length() == 0) {
+                        result += thisNum;
+                    } else {
+                        result += ", " + thisNum;
+                    }
+                }
+            }
+            return result;
+        } else if (query.toLowerCase().contains("numbers are primes")) {
+            String unsplit = query.toLowerCase();
+            String colonSplit[] = unsplit.split("primes:");
+            String numList[] = colonSplit[1].split(",");
+            StringBuilder sb = new StringBuilder();
+            for (String num : numList) {
+                int n = Integer.parseInt(num.trim());
+                if (QueryProcessor.isPrime(n)) {
+                    sb.append(n);
+                    sb.append(",");
+                }
+            }
+            if (sb.length() > 0) { // cut last comma
+                sb.setLength(sb.length() - 1);
+            }
+            return sb.toString();
         } else if (query.toLowerCase().contains("plus")) {
             if (query.contains(":")) {
                 query = query.split(":")[1];
@@ -81,5 +118,15 @@ public class QueryProcessor {
             return Integer.toString(a);
         }
         return "";
+    }
+
+    public static boolean isPrime(int number) {
+        int sqrt = (int) Math.sqrt(number) + 1;
+        for (int i = 2; i < sqrt; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
