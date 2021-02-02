@@ -59,4 +59,24 @@ public class QueryProcessorTest {
     public void knowsWhenTheresaMayBecamePM() throws Exception {
         assertThat(queryProcessor.process("when did theresa may first become PM??"), containsString("2016"));
     }
+
+    @Test
+    public void addsTwoNumbersRight() throws Exception {
+        assertThat(queryProcessor.process("what's 8 plus 8"), containsString("16"));
+    }
+
+    @Test
+    public void addsThreeNumbersRight() throws Exception {
+        assertThat(queryProcessor.process("what's 8 plus 8 plus 9"), containsString("25"));
+    }
+
+    @Test
+    public void multipliesTwoNumbersRight() throws Exception {
+        assertThat(queryProcessor.process("what's 8 multiplied by 8"), containsString("64"));
+    }
+
+    @Test
+    public void multipliesThreeNumbersRight() throws Exception {
+        assertThat(queryProcessor.process("what's 8 multiplied by 8 multiplied by 9"), containsString("576"));
+    }
 }
