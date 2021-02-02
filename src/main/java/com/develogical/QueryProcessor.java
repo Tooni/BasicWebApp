@@ -102,6 +102,22 @@ public class QueryProcessor {
                 total *= Integer.parseInt(num.trim());
             }
             return Integer.toString(total);
+        } else if (query.toLowerCase().contains("fibonacci")) {
+            if (query.contains(":")) {
+                query = query.split(":")[1];
+            }
+            String numberString = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbers = Arrays.asList(numberString.trim().split(" "));
+            int n = Integer.parseInt(numbers.get(0));
+            int a = 0;
+            int b = 1;
+            for (int i = 0; i < n; i++) {
+                int temp = a;
+                a = b;
+                b = temp + b;
+            }
+
+            return Integer.toString(a);
         }
         return "";
     }
