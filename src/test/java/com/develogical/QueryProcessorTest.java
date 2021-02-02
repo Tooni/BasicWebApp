@@ -24,4 +24,24 @@ public class QueryProcessorTest {
     public void isNotCaseSensitive() throws Exception {
         assertThat(queryProcessor.process("shakespeare"), containsString("playwright"));
     }
+
+    @Test
+    public void knowsAboutFaulkner() throws Exception {
+        assertThat(queryProcessor.process("faulkner"), containsString("Nobel Prize"));
+    }
+
+    @Test
+    public void determinesLargestOfTwoNumbers() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is the largest:1222,233 "), containsString("1222"));
+    }
+
+    @Test
+    public void determinesLargestOfThreeNumbers() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is the largest:1222,233, 333 "), containsString("1222"));
+    }
+
+    @Test
+    public void knowsWhoPlayedBondInDrNo() throws Exception {
+        assertThat(queryProcessor.process("who played james bond in dr no?"), containsString("Sean Connery"));
+    }
 }

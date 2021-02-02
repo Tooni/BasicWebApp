@@ -1,5 +1,8 @@
 package com.develogical;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class QueryProcessor {
 
     public String process(String query) {
@@ -21,10 +24,12 @@ public class QueryProcessor {
                     "do sympathetic humour and keen social perception.\" He has been " +
                     "called \"a giant of American letters,\" and many of his works " +
                     "are considered classics of Western literature.";
+        } else if (query.toLowerCase().contains("james bond") && query.toLowerCase().contains("dr no")) {
+            return "Sean Connery";
         } else if (query.toLowerCase().contains("your name")) {
             return "NSBTJD";
         } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
-            //System.out.println(query);
+
             String unsplit = query.toLowerCase();
             String colonSplit[] = unsplit.split("largest:");
             String numList[] = colonSplit[1].split(",");
@@ -57,6 +62,22 @@ public class QueryProcessor {
                 }
             }
             return result;
+        } else if (query.toLowerCase().contains("plus")) {
+            String numberString = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbers = Arrays.asList(numberString.trim().split(" "));
+            int sum = 0;
+            for (String num : numbers) {
+                sum += Integer.parseInt(num.trim());
+            }
+            return Integer.toString(sum);
+        } else if (query.toLowerCase().contains("multiplied")) {
+            String numberString = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbers = Arrays.asList(numberString.trim().split(" "));
+            int sum = 1;
+            for (String num : numbers) {
+                sum *= Integer.parseInt(num.trim());
+            }
+            return Integer.toString(sum);
         }
         return "";
     }
