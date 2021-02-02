@@ -21,6 +21,8 @@ public class QueryProcessor {
                     "do sympathetic humour and keen social perception.\" He has been " +
                     "called \"a giant of American letters,\" and many of his works " +
                     "are considered classics of Western literature.";
+        } else if (query.toLowerCase().contains("your name")) {
+            return "NSBTJD";
         }
         return "";
     }
