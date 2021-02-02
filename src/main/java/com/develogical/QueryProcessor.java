@@ -25,6 +25,8 @@ public class QueryProcessor {
                     "are considered classics of Western literature.";
         } else if (query.toLowerCase().contains("james bond") && query.toLowerCase().contains("dr no")) {
             return "Sean Connery";
+        } else if (query.toLowerCase().contains("theresa may first")) {
+            return "2016";
         } else if (query.toLowerCase().contains("eiffel tower")) {
             return "Paris";
         } else if (query.toLowerCase().contains("your name")) {
