@@ -23,7 +23,7 @@ public class QueryProcessor {
                     "are considered classics of Western literature.";
         } else if (query.toLowerCase().contains("your name")) {
             return "NSBTJD";
-        } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
+        } /*else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
             String unsplit = query.toLowerCase();
             String colonSplit[] = unsplit.split(":");
             String numList[] = colonSplit[1].split(",");
@@ -35,7 +35,7 @@ public class QueryProcessor {
                 }
             }
             return Integer.toString(max);
-        }
+        }*/
         return "";
     }
 }
