@@ -128,7 +128,7 @@ public class QueryProcessor {
             int power = Integer.parseInt(numbers.get(1));
             int ans = 1;
             for (int i = 0; i < power; i++) {
-                ans *= power;
+                ans *= base;
             }
             return Integer.toString(ans);
         }
