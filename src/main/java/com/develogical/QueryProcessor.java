@@ -116,6 +116,19 @@ public class QueryProcessor {
             }
 
             return Integer.toString(a);
+        } else if (query.toLowerCase().contains("power")) {
+            if (query.contains(":")) {
+                query = query.split(":")[1];
+            }
+            String numberString = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbers = Arrays.asList(numberString.trim().split(" "));
+            int base = Integer.parseInt(numbers.get(0));
+            int power = Integer.parseInt(numbers.get(1));
+            int ans = 1;
+            for (int i = 0; i < power; i++) {
+                ans *= power;
+            }
+            return Integer.toString(ans);
         }
         return "";
     }
