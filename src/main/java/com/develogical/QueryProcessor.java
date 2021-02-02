@@ -29,7 +29,7 @@ public class QueryProcessor {
             String numList[] = colonSplit[1].split(",");
             int max = 0;
             for (String s : numList) {
-                int thisNum = Integer.parseInt(s);
+                int thisNum = Integer.parseInt(s.trim());
                 if (max < thisNum) {
                     max = thisNum;
                 }
