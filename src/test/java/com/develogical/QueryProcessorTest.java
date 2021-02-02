@@ -49,4 +49,9 @@ public class QueryProcessorTest {
     public void knowsWhoPlayedBondInDrNo() throws Exception {
         assertThat(queryProcessor.process("who played james bond in dr no?"), containsString("Sean Connery"));
     }
+
+    @Test
+    public void knowsWhereTheEiffelTowerIs() throws Exception {
+        assertThat(queryProcessor.process("where's the eiffel tower???"), containsString("Paris"));
+    }
 }

@@ -1,6 +1,5 @@
 package com.develogical;
 
-import javax.management.Query;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,6 +25,8 @@ public class QueryProcessor {
                     "are considered classics of Western literature.";
         } else if (query.toLowerCase().contains("james bond") && query.toLowerCase().contains("dr no")) {
             return "Sean Connery";
+        } else if (query.toLowerCase().contains("eiffel tower")) {
+            return "Paris";
         } else if (query.toLowerCase().contains("your name")) {
             return "NSBTJD";
         } else if (query.toLowerCase().contains("which of the following numbers is the largest")) {
@@ -110,6 +111,22 @@ public class QueryProcessor {
                 sub -= Integer.parseInt(num.trim());
             }
             return Integer.toString(sub);
+        } else if (query.toLowerCase().contains("fibonacci")) {
+            if (query.contains(":")) {
+                query = query.split(":")[1];
+            }
+            String numberString = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbers = Arrays.asList(numberString.trim().split(" "));
+            int n = Integer.parseInt(numbers.get(0));
+            int a = 0;
+            int b = 1;
+            for (int i = 0; i < n; i++) {
+                int temp = a;
+                a = b;
+                b = temp + b;
+            }
+
+            return Integer.toString(a);
         }
         return "";
     }
